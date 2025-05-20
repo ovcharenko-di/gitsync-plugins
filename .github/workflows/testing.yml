@@ -18,13 +18,13 @@ jobs:
     steps:
       # Загрузка проекта
       - name: Актуализация
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.2.2
 
       # Установка OneScript конкретной версии
       - name: Установка OneScript
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-        uses: otymko/setup-onescript@v1.0
+        uses: otymko/setup-onescript@v1.5
         with:
           version: ${{ matrix.oscript_version }}
 
@@ -33,14 +33,13 @@ jobs:
         run: |
           opm install opm
           opm install --dev
-          opm install 1testrunner
-          opm install 1bdd 
-          opm install notify
-          opm install coverage
-          
+
+      - name: Установка gitsync (локально)
+        run: opm run install-gitsync
+
       # Задача тестирования, в результате ожидается успешное выполнение
       - name: Тестирование Unit
-        run: oscript ./tasks/test.os true
+        run: opm run test
       
       # - name: Тестирование Integrated
       #   run: | 

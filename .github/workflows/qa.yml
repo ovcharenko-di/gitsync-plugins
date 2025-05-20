@@ -18,7 +18,7 @@ jobs:
     steps:
       # Загрузка проекта
       - name: Актуализация
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.2.2
 
       # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
       - name: Извлечение имени текущей ветки
@@ -28,7 +28,7 @@ jobs:
 
       # Установка OneScript конкретной версии
       - name: Установка OneScript
-        uses: otymko/setup-onescript@v1.0
+        uses: otymko/setup-onescript@v1.5
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         with:
@@ -39,10 +39,6 @@ jobs:
         run: |
           opm install opm
           opm install --dev
-          opm install 1testrunner
-          opm install 1bdd 
-          opm install notify
-          opm install coverage
 
       # Запуск тестов и сбор покрытия кода
       - name: Покрытие кода

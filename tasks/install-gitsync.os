@@ -92,9 +92,9 @@
 
 Процедура ПолезнаяРабота()
 
-	URLРепозитория = "https://github.com/oscript-library/gitsync.git";
+	URLРепозитория = "https://github.com/ovcharenko-di/gitsync.git";
 	КаталогСборки = ВременныеФайлы.СоздатьКаталог();
-	Ветка = "master";
+	Ветка = "pr-87";
 
 	ПутьКМанифестуСборки = "build_packagedef";
 	

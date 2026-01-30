@@ -83,7 +83,7 @@ jobs:
           sudo apt install wine -y
 
       - name: Установка платформы 1С
-        uses: 1CDevFlow/onec-setup-action@main
+        uses: ovcharenko-di/onec-setup-action@feature/deb
         with:
           type: onec # Тип устанавливаемого приложения
           onec_version: ${{ matrix.v8_version }}
@@ -92,6 +92,7 @@ jobs:
         env: 
           ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
           ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+          ACTIONS_STEP_DEBUG: true
 
       - name: Установка Java 11
         if: startsWith(matrix.edt_version, '2023')
